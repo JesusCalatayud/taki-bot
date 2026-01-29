@@ -4,7 +4,6 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 
-// Necesario para __dirname en ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -25,17 +24,27 @@ client.on("messageCreate", async (message) => {
 
   if (message.mentions.has(client.user)) {
     const imagesPath = path.join(__dirname, "images");
-    const images = fs.readdirSync(imagesPath);
+    const imageFiles = fs
+      .readdirSync(imagesPath)
+      .map((f) => path.join(imagesPath, f));
 
-    if (!images.length) {
-      await message.reply("No tengo imágenes todavía 😢");
-      return;
+    const resources = [
+      ...imageFiles,
+      "https://www.youtube.com/watch?v=AYHmGJLaYHk",
+      "https://www.youtube.com/watch?v=BlBe8BmGjog",
+      "https://www.nicovideo.jp/watch/sm30112635",
+      "https://www.youtube.com/shorts/k4EpXqZSJzA"
+    ];
+
+    const choice = resources[Math.floor(Math.random() * resources.length)];
+
+    // Si es enlace de YouTube
+    if (choice.startsWith("http")) {
+      await message.reply(choice);
+    } else {
+      // Si es archivo local
+      await message.reply({ files: [choice] });
     }
-
-    const randomImage = images[Math.floor(Math.random() * images.length)];
-    await message.reply({
-      files: [path.join(imagesPath, randomImage)],
-    });
   }
 });
 

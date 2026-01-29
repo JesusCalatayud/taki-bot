@@ -34,6 +34,14 @@ client.on("messageCreate", async (message) => {
       "https://www.youtube.com/watch?v=BlBe8BmGjog",
       "https://www.nicovideo.jp/watch/sm30112635",
       "https://www.youtube.com/shorts/k4EpXqZSJzA",
+      "https://www.youtube.com/watch?v=CkKCY_pCPi8&list=RDCkKCY_pCPi8&start_radio=1",
+      "https://www.youtube.com/watch?v=Loc19ZmSbl4&list=RDLoc19ZmSbl4&start_radio=1",
+      "https://www.youtube.com/watch?v=cHQJX8a8CWc&list=RDcHQJX8a8CWc&start_radio=1",
+      "https://www.youtube.com/watch?v=-Fb9fpvpmcc&list=RDcHQJX8a8CWc&index=2",
+      "https://www.youtube.com/watch?v=1idEz14NokY&list=RD1idEz14NokY&start_radio=1",
+      "https://www.youtube.com/shorts/vC7r5anbZfo",
+      "https://www.youtube.com/watch?v=VbUIPHFbQzA",
+      "https://www.youtube.com/shorts/xYK0RgqcrBs",
     ];
 
     const choice = resources[Math.floor(Math.random() * resources.length)];

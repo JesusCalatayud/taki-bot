@@ -5,16 +5,16 @@ import path from "path";
 import { fileURLToPath } from "url";
 import express from "express";
 
- const app = express();
- const PORT = process.env.PORT || 3000;
+const app = express();
+const PORT = process.env.PORT || 3000;
 
- app.get("/", (req, res) => {
-   res.send("Taki Sensei está vivo 🟢");
- });
+app.get("/", (req, res) => {
+  res.send("Taki Sensei está vivo 🟢");
+});
 
- app.listen(PORT, () => {
-   console.log(`Servidor web de ping escuchando en puerto ${PORT}`);
- });
+app.listen(PORT, () => {
+  console.log(`Servidor web de ping escuchando en puerto ${PORT}`);
+});
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -55,6 +55,12 @@ client.on("messageCreate", async (message) => {
       "https://www.youtube.com/watch?v=VbUIPHFbQzA",
       "https://www.youtube.com/shorts/xYK0RgqcrBs",
     ];
+
+    if (message.content.includes("67")) {
+      const videoPath = path.join(__dirname, "images", "sixseven.mp4");
+      await message.reply({ files: [videoPath] });
+      return;
+    }
 
     const choice = resources[Math.floor(Math.random() * resources.length)];
 

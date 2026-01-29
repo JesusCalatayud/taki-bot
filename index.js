@@ -33,7 +33,7 @@ client.on("messageCreate", async (message) => {
       "https://www.youtube.com/watch?v=AYHmGJLaYHk",
       "https://www.youtube.com/watch?v=BlBe8BmGjog",
       "https://www.nicovideo.jp/watch/sm30112635",
-      "https://www.youtube.com/shorts/k4EpXqZSJzA"
+      "https://www.youtube.com/shorts/k4EpXqZSJzA",
     ];
 
     const choice = resources[Math.floor(Math.random() * resources.length)];
@@ -48,4 +48,15 @@ client.on("messageCreate", async (message) => {
   }
 });
 
-client.login(process.env.TOKEN);
+import express from "express";
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.get("/", (req, res) => {
+  res.send("Taki Sensei está vivo 🟢");
+});
+
+app.listen(PORT, () => {
+  console.log(`Servidor web de ping escuchando en puerto ${PORT}`);
+});

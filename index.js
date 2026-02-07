@@ -62,6 +62,11 @@ client.on("messageCreate", async (message) => {
       return;
     }
 
+     if (message.content.includes("festuk")) {
+      await message.reply("https://www.youtube.com/watch?v=vOuIrIE2c8I&list=RDvOuIrIE2c8I&start_radio=1");
+      return;
+    }
+
     const choice = resources[Math.floor(Math.random() * resources.length)];
 
     // Si es enlace de YouTube
